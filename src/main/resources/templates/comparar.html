@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparador de Jugadores</title>
+</head>
+<body>
+
+    <h1>Comparador de Jugadores de Fútbol</h1>
+
+    <p>Seleccioná dos jugadores usando los filtros de nacionalidad, posición y nombre.</p>
+
+    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+
+    <form th:action="@{/resultado}" method="post">
+
+        <h2>Jugador 1</h2>
+
+        <label for="nacionalidad1">Nacionalidad:</label>
+        <select id="nacionalidad1" name="nacionalidad1">
+            <option value="">Seleccione una nacionalidad</option>
+            <option th:each="nacionalidad : ${nacionalidades}"
+                    th:value="${nacionalidad}"
+                    th:text="${nacionalidad}">
+            </option>
+        </select>
+
+        <br><br>
+
+        <label for="posicion1">Posición:</label>
+        <select id="posicion1" name="posicion1">
+            <option value="">Seleccione una posición</option>
+        </select>
+
+        <br><br>
+
+        <label for="jugador1Id">Nombre:</label>
+        <select id="jugador1Id" name="jugador1Id" required>
+            <option value="">Seleccione un jugador</option>
+        </select>
+
+        <hr>
+
+        <h2>Jugador 2</h2>
+
+        <label for="nacionalidad2">Nacionalidad:</label>
+        <select id="nacionalidad2" name="nacionalidad2">
+            <option value="">Seleccione una nacionalidad</option>
+            <option th:each="nacionalidad : ${nacionalidades}"
+                    th:value="${nacionalidad}"
+                    th:text="${nacionalidad}">
+            </option>
+        </select>
+
+        <br><br>
+
+        <label for="posicion2">Posición:</label>
+        <select id="posicion2" name="posicion2">
+            <option value="">Seleccione una posición</option>
+        </select>
+
+        <br><br>
+
+        <label for="jugador2Id">Nombre:</label>
+        <select id="jugador2Id" name="jugador2Id" required>
+            <option value="">Seleccione un jugador</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Comparar jugadores</button>
+
+    </form>
+
+    <script>
+        function cargarPosiciones(nacionalidadSelectId, posicionSelectId, jugadorSelectId) {
+            const nacionalidad = document.getElementById(nacionalidadSelectId).value;
+            const posicionSelect = document.getElementById(posicionSelectId);
+            const jugadorSelect = document.getElementById(jugadorSelectId);
+
+            posicionSelect.innerHTML = '<option value="">Seleccione una posición</option>';
+            jugadorSelect.innerHTML = '<option value="">Seleccione un jugador</option>';
+
+            if (nacionalidad === '') {
+                return;
+            }
+
+            fetch('/comparador/api/posiciones?nacionalidad=' + encodeURIComponent(nacionalidad))
+                .then(response => response.json())
+                .then(posiciones => {
+                    posiciones.forEach(posicion => {
+                        const option = document.createElement('option');
+                        option.value = posicion;
+                        option.textContent = posicion;
+                        posicionSelect.appendChild(option);
+                    });
+                });
+        }
+
+        function cargarJugadores(nacionalidadSelectId, posicionSelectId, jugadorSelectId) {
+            const nacionalidad = document.getElementById(nacionalidadSelectId).value;
+            const posicion = document.getElementById(posicionSelectId).value;
+            const jugadorSelect = document.getElementById(jugadorSelectId);
+
+            jugadorSelect.innerHTML = '<option value="">Seleccione un jugador</option>';
+
+            if (nacionalidad === '' || posicion === '') {
+                return;
+            }
+
+            fetch('/comparador/api/jugadores?nacionalidad=' + encodeURIComponent(nacionalidad) +
+                  '&posicion=' + encodeURIComponent(posicion))
+                .then(response => response.json())
+                .then(jugadores => {
+                    jugadores.forEach(jugador => {
+                        const option = document.createElement('option');
+                        option.value = jugador.id;
+                        option.textContent = jugador.nombre + ' - ' + jugador.club;
+                        jugadorSelect.appendChild(option);
+                    });
+                });
+        }
+
+        document.getElementById('nacionalidad1').addEventListener('change', function () {
+            cargarPosiciones('nacionalidad1', 'posicion1', 'jugador1Id');
+        });
+
+        document.getElementById('posicion1').addEventListener('change', function () {
+            cargarJugadores('nacionalidad1', 'posicion1', 'jugador1Id');
+        });
+
+        document.getElementById('nacionalidad2').addEventListener('change', function () {
+            cargarPosiciones('nacionalidad2', 'posicion2', 'jugador2Id');
+        });
+
+        document.getElementById('posicion2').addEventListener('change', function () {
+            cargarJugadores('nacionalidad2', 'posicion2', 'jugador2Id');
+        });
+    </script>
+
+</body>
+</html>

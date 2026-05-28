@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado de la Comparación</title>
+</head>
+<body>
+
+    <h1>Resultado de la Comparación</h1>
+
+    <h2>Ganador</h2>
+
+    <p>
+        <strong th:text="${ganador.nombre}"></strong>
+    </p>
+
+    <p>
+        Puntaje:
+        <span th:text="${puntajeGanador}"></span>
+    </p>
+
+    <div>
+    <h3>Fórmula utilizada</h3>
+    <p>
+        El puntaje se calcula usando la siguiente fórmula:
+    </p>
+    <p>
+        <strong>Puntaje = goles * 3 + asistencias * 2 + partidos jugados</strong>
+    </p>
+</div>
+
+    <h3>Datos del ganador</h3>
+
+    <ul>
+        <li>Nacionalidad: <span th:text="${ganador.nacionalidad}"></span></li>
+        <li>Posición: <span th:text="${ganador.posicion}"></span></li>
+        <li>Club: <span th:text="${ganador.club}"></span></li>
+        <li>Liga: <span th:text="${ganador.liga}"></span></li>
+        <li>Edad: <span th:text="${ganador.edad}"></span></li>
+        <li>Partidos jugados: <span th:text="${ganador.partidosJugados}"></span></li>
+        <li>Minutos: <span th:text="${ganador.minutos}"></span></li>
+        <li>Goles: <span th:text="${ganador.goles}"></span></li>
+        <li>Asistencias: <span th:text="${ganador.asistencias}"></span></li>
+    </ul>
+
+    <hr>
+
+    <h2>Perdedor</h2>
+
+    <p>
+        <strong th:text="${perdedor.nombre}"></strong>
+    </p>
+
+    <p>
+        Puntaje:
+        <span th:text="${puntajePerdedor}"></span>
+    </p>
+
+    <h3>Datos del perdedor</h3>
+
+    <ul>
+        <li>Nacionalidad: <span th:text="${perdedor.nacionalidad}"></span></li>
+        <li>Posición: <span th:text="${perdedor.posicion}"></span></li>
+        <li>Club: <span th:text="${perdedor.club}"></span></li>
+        <li>Liga: <span th:text="${perdedor.liga}"></span></li>
+        <li>Edad: <span th:text="${perdedor.edad}"></span></li>
+        <li>Partidos jugados: <span th:text="${perdedor.partidosJugados}"></span></li>
+        <li>Minutos: <span th:text="${perdedor.minutos}"></span></li>
+        <li>Goles: <span th:text="${perdedor.goles}"></span></li>
+        <li>Asistencias: <span th:text="${perdedor.asistencias}"></span></li>
+    </ul>
+
+    <hr>
+
+    <br>
+
+    <a th:href="@{/comparar}">Volver a comparar</a>
+
+</body>
+</html>

@@ -177,7 +177,6 @@ VALUES
 
 
 -- Jugadores agregados manualmente para que el proyecto tenga nombres más conocidos.
--- Datos aproximados para uso educativo/demo, no tomarlos como estadísticas oficiales exactas.
 INSERT INTO jugador (nombre, nacionalidad, posicion, club, liga, edad, partidos_jugados, minutos, goles, asistencias)
 VALUES
 ('Lionel Messi', 'Argentina', 'Delantero', 'Inter Miami', 'MLS', 38, 25, 2100, 20, 10),
@@ -186,7 +185,19 @@ VALUES
 ('Luis Suarez', 'Uruguay', 'Delantero', 'Inter Miami', 'MLS', 39, 28, 2200, 18, 8),
 ('Angel Di Maria', 'Argentina', 'Delantero', 'Benfica', 'Primeira Liga', 38, 26, 1900, 9, 11),
 ('Lautaro Martinez', 'Argentina', 'Delantero', 'Inter', 'Serie A', 28, 33, 2700, 24, 4),
-('Julian Alvarez', 'Argentina', 'Delantero', 'Atletico Madrid', 'La Liga', 26, 34, 2400, 17, 6),
-('Enzo Fernandez', 'Argentina', 'Mediocampista', 'Chelsea', 'Premier League', 25, 32, 2600, 5, 7),
-('Emiliano Martinez', 'Argentina', 'Arquero', 'Aston Villa', 'Premier League', 33, 36, 3240, 0, 0),
 ('Rodrigo De Paul', 'Argentina', 'Mediocampista', 'Atletico Madrid', 'La Liga', 31, 31, 2300, 3, 6);
+
+-- Jugadores históricos
+INSERT IGNORE INTO jugador 
+(nombre, nacionalidad, posicion, club, liga, edad, partidos_jugados, minutos, goles, asistencias)
+VALUES
+('Diego Maradona', 'Argentina', 'Mediocampista', 'Napoli', 'Históricos', 60, 491, 39000, 259, 150),
+('Pelé', 'Brasil', 'Delantero', 'Santos', 'Históricos', 82, 812, 65000, 757, 300),
+('Johan Cruyff', 'Países Bajos', 'Mediocampista', 'Ajax', 'Históricos', 68, 514, 41000, 291, 180),
+('Zinedine Zidane', 'Francia', 'Mediocampista', 'Real Madrid', 'Históricos', 51, 506, 40500, 95, 160),
+('Ronaldo Nazario', 'Brasil', 'Delantero', 'Real Madrid', 'Históricos', 47, 452, 34000, 295, 90),
+('Ronaldinho', 'Brasil', 'Mediocampista', 'Barcelona', 'Históricos', 44, 543, 42000, 197, 170),
+('Franz Beckenbauer', 'Alemania', 'Defensor', 'Bayern Munich', 'Históricos', 78, 560, 50000, 76, 110),
+('Alfredo Di Stefano', 'Argentina', 'Delantero', 'Real Madrid', 'Históricos', 88, 521, 46000, 376, 120),
+('Michel Platini', 'Francia', 'Mediocampista', 'Juventus', 'Históricos', 68, 432, 36000, 224, 130),
+('Roberto Baggio', 'Italia', 'Delantero', 'Juventus', 'Históricos', 57, 488, 39000, 220, 110);

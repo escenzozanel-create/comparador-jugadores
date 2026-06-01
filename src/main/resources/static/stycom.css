@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    /* Imagen de fondo de una cancha de fútbol */
+    background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Oscurecer fondo para que se lea el texto */
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Títulos y textos */
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px #000;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ddd;
+    font-size: 1.1rem;
+}
+
+/* Contenedor principal - Panel de vidrio */
+form {
+    background-color: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+    /*Para simular enfrentaniento visual sin cambiar HTML*/
+    text-align: center; 
+}
+
+/* Etiquetas y Selects */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #444;
+    background-color: #222;
+    color: #fff;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #28a745;
+}
+
+hr {
+    margin: 25px 0;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Botón de comparación */
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #28a745, #1e7e34);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Estilo para el mensaje de error */
+style* {
+    color: #ff6b6b;
+    text-align: center;
+    font-weight: bold;
+}

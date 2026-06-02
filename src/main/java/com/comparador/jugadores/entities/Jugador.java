@@ -28,7 +28,7 @@ public class Jugador {
     }
 
     public Integer calcularPuntaje() {
-        return (goles * 3) + (asistencias * 2) + partidosJugados;
+        return((goles + asistencias) * 90 / minutos) + ((minutos / partidos) / 90);
     }
 
     public Long getId() {

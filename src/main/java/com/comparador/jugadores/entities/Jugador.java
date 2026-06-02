@@ -27,8 +27,15 @@ public class Jugador {
     public Jugador() {
     }
 
-    public Integer calcularPuntaje() {
-        return((goles + asistencias) * 90 / minutos) + ((minutos / partidos) / 90);
+    public Double calcularPuntaje() {
+        // Para evitar resultados nulos si es que no jugo un partido //
+    if (minutos == null || minutos == 0 || partidosJugados == null || partidosJugados == 0) {
+        return 0.0;
+    }
+    // Goles y asistencias por 90 minutos + promedio de minutos por partido
+    Double efectividad = ((goles + asistencias) * 90.0) / minutos;
+    Double desgaste = minutos / (partidosJugados * 90.0);
+    return efectividad + desgaste;
     }
 
     public Long getId() {

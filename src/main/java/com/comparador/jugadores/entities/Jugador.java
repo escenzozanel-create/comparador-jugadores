@@ -27,16 +27,31 @@ public class Jugador {
     public Jugador() {
     }
 
-    public Double calcularPuntaje() {
-        // Para evitar resultados nulos si es que no jugo un partido //
+ public Double calcularPuntaje() {
+    // Para evitar resultados nulos si es que no jugó un partido
     if (minutos == null || minutos == 0 || partidosJugados == null || partidosJugados == 0) {
         return 0.0;
     }
+
+    Integer golesJugador = goles != null ? goles : 0;
+    Integer asistenciasJugador = asistencias != null ? asistencias : 0;
+
     // Goles y asistencias por 90 minutos + promedio de minutos por partido
-    Double efectividad = ((goles + asistencias) * 90.0) / minutos;
+    Double efectividad = ((golesJugador + asistenciasJugador) * 90.0) / minutos;
     Double desgaste = minutos / (partidosJugados * 90.0);
-    return efectividad + desgaste;
+
+    Double puntajeBase = efectividad + desgaste;
+
+    if (tieneBufoArgentino()) {
+        return puntajeBase * 4;
     }
+
+    return puntajeBase;
+}
+
+public boolean tieneBufoArgentino() {
+    return nacionalidad != null && nacionalidad.equalsIgnoreCase("Argentina");
+}
 
     public Long getId() {
         return id;

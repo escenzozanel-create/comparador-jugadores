@@ -12,9 +12,9 @@
 
     <!-- Contenedor principal para los dos jugadores -->
     <div class="contenedor-comparacion">
-        
-        <!-- Jugador 1 (Ganador) -->
-        <div class="tarjeta-jugador ganadro">
+
+        <!-- Jugador ganador -->
+        <div class="tarjeta-jugador ganador">
             <h2>Ganador</h2>
 
             <p class="nombre">
@@ -23,6 +23,10 @@
 
             <p class="puntaje">
                 Puntaje: <span th:text="${puntajeGanador}"></span>
+            </p>
+
+            <p th:if="${ganador.tieneBufoArgentino()}">
+                +300% por ser campeón del mundo
             </p>
 
             <h3>Datos del ganador</h3>
@@ -40,7 +44,7 @@
             </ul>
         </div>
 
-        <!-- Jugador 2 (Perdedor) -->
+        <!-- Jugador perdedor -->
         <div class="tarjeta-jugador perdedor">
             <h2>Perdedor</h2>
 
@@ -50,6 +54,10 @@
 
             <p class="puntaje">
                 Puntaje: <span th:text="${puntajePerdedor}"></span>
+            </p>
+
+            <p th:if="${perdedor.tieneBufoArgentino()}">
+                +300% por ser campeón del mundo
             </p>
 
             <h3>Datos del perdedor</h3>
@@ -72,8 +80,13 @@
     <!-- Fórmula -->
     <div class="formula">
         <h3>Fórmula utilizada</h3>
-        <p>El puntaje se calcula usando la siguiente fórmula:</p>
-        <p><strong>Puntaje = ((goles + asistencias) * 90.0) / minutos + minutos / (partidosJugados * 90.0)</strong></p>
+        <p>El puntaje base se calcula usando la siguiente fórmula:</p>
+        <p>
+            <strong>Puntaje base = ((goles + asistencias) * 90.0) / minutos + minutos / (partidosJugados * 90.0)</strong>
+        </p>
+        <p>
+            Si el jugador es argentino, se aplica un bufo de +300% por ser campeón del mundo.
+        </p>
     </div>
 
     <a th:href="@{/comparar}" class="boton-volver">Volver a comparar</a>

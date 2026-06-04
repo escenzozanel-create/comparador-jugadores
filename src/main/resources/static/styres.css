@@ -52,15 +52,58 @@ h3 {
 }
 
 /* Contenedor principal */
-div {
+.contenedor-comparacion {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+}
+/* Contenedor principal - Los dos jugadores lado a lado */
+.contenedor-comparacion {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+}
+
+/* Tarjeta de cada jugador - Semi transparente */
+.tarjeta-jugador {
+    flex: 1;
+    min-width: 300px;
     background-color: rgba(0, 0, 0, 0.85);
-    padding: 30px;
+    backdrop-filter: blur(10px);
+    padding: 25px;
     border-radius: 15px;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo especial para el ganador */
+.tarjeta-jugador.ganadro {
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Estilo especial para el perdedor */
+.tarjeta-jugador.perdedor {
+    border: 2px solid #888;
+    opacity: 0.8;
+}
+/* Contenedor de la fórmula */
+.formula {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
     max-width: 600px;
     margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 p {

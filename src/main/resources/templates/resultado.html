@@ -5,22 +5,26 @@
     <title>Resultado de la Comparación</title>
     <link rel="stylesheet" th:href="@{/styres.css}">
 </head>
+
 <body>
 
     <h1>Resultado de la Comparación</h1>
-    <div class="contenedor-comparion"></div>
-        <div class="ganador">
+
+    <!-- Contenedor principal para los dos jugadores -->
+    <div class="contenedor-comparacion">
+        
+        <!-- Jugador 1 (Ganador) -->
+        <div class="tarjeta-jugador ganadro">
             <h2>Ganador</h2>
 
-            <p>
+            <p class="nombre">
                 <strong th:text="${ganador.nombre}"></strong>
             </p>
 
-            <p>
-                Puntaje:
-                <span th:text="${puntajeGanador}"></span>
+            <p class="puntaje">
+                Puntaje: <span th:text="${puntajeGanador}"></span>
             </p>
-            
+
             <h3>Datos del ganador</h3>
 
             <ul>
@@ -35,18 +39,17 @@
                 <li>Asistencias: <span th:text="${ganador.asistencias}"></span></li>
             </ul>
         </div>
-        
-        <div class="perdedor">
 
+        <!-- Jugador 2 (Perdedor) -->
+        <div class="tarjeta-jugador perdedor">
             <h2>Perdedor</h2>
 
-            <p>
+            <p class="nombre">
                 <strong th:text="${perdedor.nombre}"></strong>
             </p>
 
-            <p>
-                Puntaje:
-                <span th:text="${puntajePerdedor}"></span>
+            <p class="puntaje">
+                Puntaje: <span th:text="${puntajePerdedor}"></span>
             </p>
 
             <h3>Datos del perdedor</h3>
@@ -63,22 +66,17 @@
                 <li>Asistencias: <span th:text="${perdedor.asistencias}"></span></li>
             </ul>
         </div>
+
     </div>
+
+    <!-- Fórmula -->
     <div class="formula">
-        <div>
-            <h3>Fórmula utilizada</h3>
-            <p>
-                El puntaje se calcula usando la siguiente fórmula:
-            </p>
-            <p>
-                <strong>Puntaje = efectividad = ((goles + asistencias) * 90.0) / minutos + desgaste = minutos / (partidosJugados * 90.0)</strong>
-            </p>
-            </div>
+        <h3>Fórmula utilizada</h3>
+        <p>El puntaje se calcula usando la siguiente fórmula:</p>
+        <p><strong>Puntaje = ((goles + asistencias) * 90.0) / minutos + minutos / (partidosJugados * 90.0)</strong></p>
     </div>
 
-    <br>
-
-    <a th:href="@{/comparar}">Volver a comparar</a>
+    <a th:href="@{/comparar}" class="boton-volver">Volver a comparar</a>
 
 </body>
 </html>

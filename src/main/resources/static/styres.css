@@ -8,7 +8,6 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    /* Fondo de celebración/trofeo Champions */
     background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1920&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
@@ -18,14 +17,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* Oscurecer fondo para leggibilidad */
     background-color: rgba(0, 0, 0, 0.7);
     background-blend-mode: darken;
     color: white;
     padding: 20px;
 }
 
-/* Títulos principales */
 h1 {
     text-align: center;
     margin-bottom: 30px;
@@ -39,66 +36,101 @@ h1 {
 h2 {
     text-align: center;
     margin-bottom: 15px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     border-bottom: 2px solid #ffd700;
     padding-bottom: 10px;
-    margin-top: 20px;
 }
 
 h3 {
-    margin-top: 20px;
+    margin-top: 15px;
     margin-bottom: 10px;
-    color: #ddd;
+    color: #ccc;
+    font-size: 1.1rem;
 }
 
-/* Contenedor principal */
-div {
+/* Contenedor principal - Los dos jugadores lado a lado */
+.contenedor-comparacion {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+}
+
+/* Tarjeta de cada jugador - Semi transparente */
+.tarjeta-jugador {
+    flex: 1;
+    min-width: 300px;
     background-color: rgba(0, 0, 0, 0.85);
-    padding: 30px;
+    backdrop-filter: blur(10px);
+    padding: 25px;
     border-radius: 15px;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-p {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
+/* Estilo especial para el ganador */
+.tarjeta-jugador.ganadro {
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
-/* Datos del jugador */
+/* Estilo especial para el perdedor */
+.tarjeta-jugador.perdedor {
+    border: 2px solid #888;
+    opacity: 0.8;
+}
+
+/* Nombre del jugador */
+.nombre {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.nombre strong {
+    color: #ffd700;
+}
+
+/* Puntaje */
+.puntaje {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+/* Lista de datos */
 ul {
     list-style: none;
-    padding: 10px;
+    padding: 0;
 }
 
 li {
     padding: 8px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
 }
 
 li:last-child {
     border-bottom: none;
 }
 
-/* Estilos específicos */
-strong {
-    color: #ffd700;
-    font-size: 1.4rem;
+/* Contenedor de la fórmula */
+.formula {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 20px;
 }
 
-/* Separador */
-hr {
-    margin: 25px 0;
-    border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Enlace */
-a {
+/* Botón volver */
+.boton-volver {
     display: inline-block;
     padding: 12px 30px;
     background-color: #28a745;
@@ -107,9 +139,8 @@ a {
     border-radius: 8px;
     font-weight: bold;
     transition: background 0.3s;
-    margin-top: 20px;
 }
 
-a:hover {
+.boton-volver:hover {
     background-color: #218838;
 }

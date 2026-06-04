@@ -5,81 +5,91 @@
     <title>Resultado de la Comparación</title>
     <link rel="stylesheet" th:href="@{/styres.css}">
 </head>
+
 <body>
 
     <h1>Resultado de la Comparación</h1>
 
-    <h2>Ganador</h2>
+    <!-- Contenedor principal para los dos jugadores -->
+    <div class="contenedor-comparacion">
 
-    <p>
-        <strong th:text="${ganador.nombre}"></strong>
-    </p>
+        <!-- Jugador ganador -->
+        <div class="tarjeta-jugador ganador">
+            <h2>Ganador</h2>
 
-    <p>
-        Puntaje:
-        <span th:text="${puntajeGanador}"></span>
-    </p>
+            <p class="nombre">
+                <strong th:text="${ganador.nombre}"></strong>
+            </p>
 
-    <p th:if="${ganador.tieneBufoArgentino()}">
-    +300% por ser campeón del mundo
-    </p>
+            <p class="puntaje">
+                Puntaje: <span th:text="${puntajeGanador}"></span>
+            </p>
 
-    <div>
-    <h3>Fórmula utilizada</h3>
-    <p>
-        El puntaje se calcula usando la siguiente fórmula:
-    </p>
-    <p>
-        <strong>Puntaje = efectividad = ((goles + asistencias) * 90.0) / minutos + desgaste = minutos / (partidosJugados * 90.0)</strong>
-    </p>
-</div>
+            <p th:if="${ganador.tieneBufoArgentino()}">
+                +300% por ser campeón del mundo
+            </p>
 
-    <h3>Datos del ganador</h3>
+            <h3>Datos del ganador</h3>
 
-    <ul>
-        <li>Nacionalidad: <span th:text="${ganador.nacionalidad}"></span></li>
-        <li>Posición: <span th:text="${ganador.posicion}"></span></li>
-        <li>Club: <span th:text="${ganador.club}"></span></li>
-        <li>Liga: <span th:text="${ganador.liga}"></span></li>
-        <li>Edad: <span th:text="${ganador.edad}"></span></li>
-        <li>Partidos jugados: <span th:text="${ganador.partidosJugados}"></span></li>
-        <li>Minutos: <span th:text="${ganador.minutos}"></span></li>
-        <li>Goles: <span th:text="${ganador.goles}"></span></li>
-        <li>Asistencias: <span th:text="${ganador.asistencias}"></span></li>
-    </ul>
+            <ul>
+                <li>Nacionalidad: <span th:text="${ganador.nacionalidad}"></span></li>
+                <li>Posición: <span th:text="${ganador.posicion}"></span></li>
+                <li>Club: <span th:text="${ganador.club}"></span></li>
+                <li>Liga: <span th:text="${ganador.liga}"></span></li>
+                <li>Edad: <span th:text="${ganador.edad}"></span></li>
+                <li>Partidos jugados: <span th:text="${ganador.partidosJugados}"></span></li>
+                <li>Minutos: <span th:text="${ganador.minutos}"></span></li>
+                <li>Goles: <span th:text="${ganador.goles}"></span></li>
+                <li>Asistencias: <span th:text="${ganador.asistencias}"></span></li>
+            </ul>
+        </div>
 
-    <hr>
+        <!-- Jugador perdedor -->
+        <div class="tarjeta-jugador perdedor">
+            <h2>Perdedor</h2>
 
-    <h2>Perdedor</h2>
+            <p class="nombre">
+                <strong th:text="${perdedor.nombre}"></strong>
+            </p>
 
-    <p>
-        <strong th:text="${perdedor.nombre}"></strong>
-    </p>
+            <p class="puntaje">
+                Puntaje: <span th:text="${puntajePerdedor}"></span>
+            </p>
 
-    <p>
-        Puntaje:
-        <span th:text="${puntajePerdedor}"></span>
-    </p>
+            <p th:if="${perdedor.tieneBufoArgentino()}">
+                +300% por ser campeón del mundo
+            </p>
 
-    <h3>Datos del perdedor</h3>
+            <h3>Datos del perdedor</h3>
 
-    <ul>
-        <li>Nacionalidad: <span th:text="${perdedor.nacionalidad}"></span></li>
-        <li>Posición: <span th:text="${perdedor.posicion}"></span></li>
-        <li>Club: <span th:text="${perdedor.club}"></span></li>
-        <li>Liga: <span th:text="${perdedor.liga}"></span></li>
-        <li>Edad: <span th:text="${perdedor.edad}"></span></li>
-        <li>Partidos jugados: <span th:text="${perdedor.partidosJugados}"></span></li>
-        <li>Minutos: <span th:text="${perdedor.minutos}"></span></li>
-        <li>Goles: <span th:text="${perdedor.goles}"></span></li>
-        <li>Asistencias: <span th:text="${perdedor.asistencias}"></span></li>
-    </ul>
+            <ul>
+                <li>Nacionalidad: <span th:text="${perdedor.nacionalidad}"></span></li>
+                <li>Posición: <span th:text="${perdedor.posicion}"></span></li>
+                <li>Club: <span th:text="${perdedor.club}"></span></li>
+                <li>Liga: <span th:text="${perdedor.liga}"></span></li>
+                <li>Edad: <span th:text="${perdedor.edad}"></span></li>
+                <li>Partidos jugados: <span th:text="${perdedor.partidosJugados}"></span></li>
+                <li>Minutos: <span th:text="${perdedor.minutos}"></span></li>
+                <li>Goles: <span th:text="${perdedor.goles}"></span></li>
+                <li>Asistencias: <span th:text="${perdedor.asistencias}"></span></li>
+            </ul>
+        </div>
 
-    <hr>
+    </div>
 
-    <br>
+    <!-- Fórmula -->
+    <div class="formula">
+        <h3>Fórmula utilizada</h3>
+        <p>El puntaje base se calcula usando la siguiente fórmula:</p>
+        <p>
+            <strong>Puntaje base = ((goles + asistencias) * 90.0) / minutos + minutos / (partidosJugados * 90.0)</strong>
+        </p>
+        <p>
+            Si el jugador es argentino, se aplica un bufo de +300% por ser campeón del mundo.
+        </p>
+    </div>
 
-    <a th:href="@{/comparar}">Volver a comparar</a>
+    <a th:href="@{/comparar}" class="boton-volver">Volver a comparar</a>
 
 </body>
 </html>
